@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Sakshi",
+    "course": "B.Tech",
+    "marks": 92
+  },
+  {
+    "id": 2,
+    "name": "Rahul",
+    "course": "BCA",
+    "marks": 85
+  },
+  {
+    "id": 3,
+    "name": "Priya",
+    "course": "B.Sc",
+    "marks": 88
+  },
+  {
+    "id": 4,
+    "name": "Aman",
+    "course": "B.Tech",
+    "marks": 90
+  },
+  {
+    "id": 5,
+    "name": "Neha",
+    "course": "BCA",
+    "marks": 95
+  }
+]
