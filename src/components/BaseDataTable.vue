@@ -51,39 +51,22 @@
               {{ sortOrder === 'asc' ? '↑' : '↓' }}
 
             </span>
-
-
           </th>
-
-
           <th>
             Actions
           </th>
-
-
         </tr>
-
-
       </thead>
-
-
-
       <tbody>
-
-
         <tr
           v-for="row in paginatedData"
           :key="row.id"
           @click="handleRowClick(row)"
         >
-
-
           <td
             v-for="column in columns"
             :key="column.field"
           >
-
-
             <slot
               name="cell"
               :row="row"
@@ -97,10 +80,7 @@
 
           </td>
 
-
-
           <td>
-
             <button
               @click.stop="deleteRow(row.id)"
             >
@@ -109,73 +89,37 @@
 
             </button>
 
-
           </td>
 
-
         </tr>
-
-
-
         <tr v-if="sortedData.length === 0">
-
           <td :colspan="columns.length + 1">
-
             No Data Found
-
           </td>
-
         </tr>
-
-
       </tbody>
-
-
     </table>
-
-
-
     <div class="pagination">
-
-
       <button
         @click="currentPage--"
         :disabled="currentPage === 1"
       >
-
         Previous
-
       </button>
-
-
-
       <span>
 
         Page {{currentPage}} of {{totalPages}}
 
       </span>
-
-
-
       <button
         @click="currentPage++"
         :disabled="currentPage === totalPages"
       >
-
-        Next
-
+       Next
       </button>
-
-
     </div>
-
-
   </div>
-
 </template>
-
-
-
 <script setup>
 import { ref, computed, watch } from "vue";
 
