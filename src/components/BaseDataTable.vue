@@ -62,22 +62,39 @@ placeholder="Search..."
               {{ sortOrder === 'asc' ? '↑' : '↓' }}
 
             </span>
+
+
           </th>
+
+
           <th>
             Actions
           </th>
+
+
         </tr>
+
+
       </thead>
+
+
+
       <tbody>
+
+
         <tr
           v-for="row in paginatedData"
           :key="row.id"
           @click="handleRowClick(row)"
         >
+
+
           <td
             v-for="column in columns"
             :key="column.field"
           >
+
+
             <slot
               name="cell"
               :row="row"
@@ -91,17 +108,9 @@ placeholder="Search..."
 
           </td>
 
+
+
           <td>
-<<<<<<< HEAD
-            <button
-              @click.stop="deleteRow(row.id)"
-            >
-
-              Delete
-
-            </button>
-
-=======
            <button
            class="edit-btn"
            @click.stop="editRow(row)"
@@ -115,38 +124,71 @@ placeholder="Search..."
           >
           Delete
           </button>
->>>>>>> abe7bf0 (Enhanced UI with professional styling and improved dialogs)
           </td>
 
         </tr>
+
+
+
         <tr v-if="sortedData.length === 0">
+
           <td :colspan="columns.length + 1">
+
             No Data Found
+
           </td>
+
         </tr>
+
+
       </tbody>
+
+
     </table>
+
+
+
     <div class="pagination">
+
+
       <button
         @click="currentPage--"
         :disabled="currentPage === 1"
       >
+
         Previous
+
       </button>
+
+
+
       <span>
 
         Page {{currentPage}} of {{totalPages}}
 
       </span>
+
+
+
       <button
         @click="currentPage++"
         :disabled="currentPage === totalPages"
       >
-       Next
+
+        Next
+
       </button>
+
+
     </div>
+
+
   </div>
+
 </template>
+
+
+
 <script setup>
 
 import { ref, computed, watch } from "vue";
@@ -350,6 +392,7 @@ background:#d32f2f;
 background:#4CAF50;
 }
 
+
 .add-btn:hover{
 background:#2e7d32;
 }
@@ -419,9 +462,5 @@ flex-wrap:wrap;
 gap:15px;
 align-items:center;
 }
-<<<<<<< HEAD
-</style>
-=======
 
 </style>
->>>>>>> abe7bf0 (Enhanced UI with professional styling and improved dialogs)
