@@ -6,11 +6,17 @@
     </slot>
 
 
-    <input
-      v-model="search"
-      type="text"
-      placeholder="Search..."
-    />
+    <div class="search-box">
+
+<span>🔍</span>
+
+<input
+v-model="search"
+type="text"
+placeholder="Search..."
+/>
+
+</div>
 
 
     <div class="controls">
@@ -24,11 +30,16 @@
         <option :value="10">10</option>
 
       </select>
-
     </div>
-<div class="add-form">
-<slot name="form"></slot>
-</div>
+
+    <div class="add-form">
+    <div class="form-header">
+    <h3>Add New Record</h3>
+    </div>
+    <div class="form-body">
+    <slot name="form"></slot>
+    </div>
+   </div>
 
 
 
@@ -81,6 +92,7 @@
           </td>
 
           <td>
+<<<<<<< HEAD
             <button
               @click.stop="deleteRow(row.id)"
             >
@@ -89,6 +101,21 @@
 
             </button>
 
+=======
+           <button
+           class="edit-btn"
+           @click.stop="editRow(row)"
+           >
+           Edit
+           </button>
+
+          <button
+          class="delete-btn"
+          @click.stop="deleteRow(row.id)"
+          >
+          Delete
+          </button>
+>>>>>>> abe7bf0 (Enhanced UI with professional styling and improved dialogs)
           </td>
 
         </tr>
@@ -121,6 +148,7 @@
   </div>
 </template>
 <script setup>
+
 import { ref, computed, watch } from "vue";
 
 const props = defineProps({
@@ -130,7 +158,8 @@ const props = defineProps({
 
 const emit = defineEmits([
   "row-click",
-  "delete-row"
+  "delete-row",
+  "edit-row"
 ]);
 
 const search = ref("");
@@ -210,6 +239,12 @@ const deleteRow = (id) => {
   emit("delete-row", id);
 };
 
+
+// Edit
+const editRow = (row) => {
+  emit("edit-row", row);
+};
+
 // Reset page when search changes
 watch(search, () => {
   currentPage.value = 1;
@@ -224,38 +259,169 @@ watch([itemsPerPage, sortedData], () => {
 </script>
 
 <style scoped>
+
 table{
 width:100%;
 border-collapse:collapse;
 margin-top:20px;
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 12px 30px rgba(0,0,0,.08);
 }
-th,td{
-border:1px solid #ddd;
-padding:12px;
+
+th,
+td{
+padding:18px;
+border-bottom:1px solid #f0f0f0;
 }
 
 
 th{
-background:#4CAF50;
+background:linear-gradient(90deg,#43a047,#2e7d32);
 color:white;
 cursor:pointer;
+padding:16px;
+font-size:16px;
 }
+
 tr:nth-child(even){
-background:#f5f5f5;
+background:#fafafa;
 }
+
+tr:hover{
+background:#e8f5e9;
+transition:.2s;
+}
+
 input{
-width:300px;
-padding:10px;
-margin:15px 0;
+width:320px;
+padding:12px 15px;
+border-radius:10px;
+border:1px solid #ddd;
+margin-bottom:20px;
+transition:.3s;
 }
+
+input:focus{
+border-color:#4CAF50;
+box-shadow:0 0 5px rgba(76,175,80,.4);
+}
+
 button{
-padding:8px 15px;
+padding:10px 18px;
+border:none;
+border-radius:8px;
 cursor:pointer;
+background:#4CAF50;
+color:white;
+font-weight:600;
+transition:.3s;
+margin-right:8px;
 }
+
+button:hover{
+background:#2e7d32;
+transform:scale(1.04);
+}
+/* Edit Button */
+
+.edit-btn{
+background:#2196F3;
+}
+
+.edit-btn:hover{
+background:#1976D2;
+}
+
+/* Delete Button */
+
+.delete-btn{
+background:#f44336;
+}
+
+.delete-btn:hover{
+background:#d32f2f;
+}
+
+/* Add Button */
+
+.add-btn{
+background:#4CAF50;
+}
+
+.add-btn:hover{
+background:#2e7d32;
+}
+
 .pagination{
-margin-top:20px;
 display:flex;
+justify-content:center;
+align-items:center;
+gap:25px;
+margin-top:30px;
+font-weight:600;
+}
+
+.controls{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+font-weight:600;
+}
+
+.search-box{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:20px;
+}
+
+.search-box span{
+font-size:20px;
+color:#4CAF50;
+}
+
+.search-box input{
+margin:0;
+}
+thead{
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.add-form{
+background:white;
+padding:25px;
+border-radius:15px;
+margin-top:20px;
+margin-bottom:25px;
+box-shadow:0 6px 18px rgba(0,0,0,.08);
+}
+
+.form-header{
+margin-bottom:18px;
+padding-bottom:12px;
+border-bottom:1px solid #eee;
+}
+
+.form-header h3{
+margin:0;
+color:#2e7d32;
+font-size:22px;
+}
+
+.form-body{
+display:flex;
+flex-wrap:wrap;
 gap:15px;
 align-items:center;
 }
+<<<<<<< HEAD
 </style>
+=======
+
+</style>
+>>>>>>> abe7bf0 (Enhanced UI with professional styling and improved dialogs)
